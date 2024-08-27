@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        body {
+            background-color: black;
+        }
+        
+        #countdown {
+            font-size: 35px;
+            font-weight: bold;
+            margin: auto;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            color: aliceblue;
+        }
+        
+        #quote {
+            margin: auto;
+            position: absolute;
+            font-size: 18px;
+            color: cadetblue;
+            margin-top: 35px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown"></div>
+    <div id="quote"></div>
+    <script>
+        let targetDate = new Date("2024-12-31 23:59:59");
+
+
+        function updateCountdownAndQuote() {
+            let now = new Date();
+            let timeDiff = targetDate - now;
+
+            let days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+
+            document.getElementById("countdown").innerHTML = `${days} day: ${hours} hours, ${minutes} min, ${seconds} seconds`;
+
+
+            let quotes = [
+                "Baker reported that seven people told him that they had been quoted in stories written by Pelczar, but had not spoken to him.",
+                "well done. ...",
+                "The way to get started is to quit talking and begin doing. -Walt Disney",
+
+            ];
+            let randomIndex = Math.floor(Math.random() * quotes.length);
+            let randomQuote = quotes[randomIndex];
+
+
+            document.getElementById("quote").innerHTML = `"${randomQuote}"`;
+        }
+
+
+        updateCountdownAndQuote();
+
+
+        setInterval(updateCountdownAndQuote, 1000);
+    </script>
+</body>
+</html>
